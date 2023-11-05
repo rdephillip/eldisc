@@ -1,0 +1,2 @@
+# eldisc - Donor Drive API Connected Discord Bot
+This is a very simple Discord bot using DiscordGo which also communicates with your configured Donor Drive event participant page. I built this to work with Extra Life, but I've made it configurable. I have not tested this with any other events from Donor Drive at this time. Once I am able to do so, I will look at what is different between each connection to see if adjustments are necessary.
