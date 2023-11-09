@@ -8,7 +8,16 @@
 //						are available within the Discord environment.
 // ===========================================================================================================================================
 // TODO:
-//		- ADD help command for config manual responses in Discord. Manual should be DM'd to Admin user on request.
+//		- ADD: help command for config manual responses in Discord. Manual should be DM'd to Admin user on request.
+//		- UPDATE: Re-adapt status command back to announcing in channel requested from
+//		- - Is status command needed at all if live status is present?
+//		- ADD: Look at an updating message for the configured announcement channel since we are polling every 15s for donations anyway
+//		- - If the embed isn't the "newest message" in the announce channel, create a new message
+//		- - Delete old embed to reduce clutter?
+//		- - Update this embed "live"
+//		- - Add donation count
+//		- - Add percentage
+//		- - Add progress bar using emotes :blue_square: and :white_square_button:
 // ===========================================================================================================================================
 
 package main
