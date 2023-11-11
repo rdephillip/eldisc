@@ -44,6 +44,7 @@ var (
 	ChannelID       string
 	Command         string
 	Charity         string
+	MessageID       string
 )
 
 func main() {
@@ -71,7 +72,7 @@ func main() {
 
 	// Display console information of bot status and hardcorded Discord configuration commands
 	log.Println("Bot is now running. Press CTRL-C to exit.")
-	log.Println("Default goal status command: !status")
+	log.Println("Goal status command: " + Command)
 	log.Println("Discord config commands:")
 	log.Println("\t!config set token [token]")
 	log.Println("\t!config set url [url]")
