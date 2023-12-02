@@ -49,7 +49,7 @@ func checkDonations(s *discordgo.Session, t time.Time) {
 					},
 					{
 						Name:   fmt.Sprintf("%s Goal Status", Charity),
-						Value:  fmt.Sprintf("$%s of $%s", raised, goal),
+						Value:  fmt.Sprintf("$%s of $%s", raised+amount, goal),
 						Inline: true,
 					},
 				},
