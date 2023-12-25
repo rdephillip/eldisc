@@ -86,7 +86,7 @@ func saveConfig(makeFile bool) {
 			"\t\"Pid\":\"\",\n" +
 			"\t\"AdminAuthor\":\"\",\n" +
 			"\t\"ChannelID\":\"\",\n" +
-			"\t\"Command\":\"!status\"\n" +
+			"\t\"Command\":\"!status\",\n" +
 			"\t\"Charity\":\"\"\n" +
 			"}"
 	} else {
@@ -98,7 +98,7 @@ func saveConfig(makeFile bool) {
 			"\t\"Pid\":\"%s\",\n"+
 			"\t\"AdminAuthor\":\"%s\",\n"+
 			"\t\"ChannelID\":\"%s\",\n"+
-			"\t\"Command\":\"%s\"\n"+
+			"\t\"Command\":\"%s\",\n"+
 			"\t\"Charity\":\"%s\"\n"+
 			"}", strconv.FormatBool(FirstSetup), Token, Url, Pid, AdminAuthor, ChannelID, Command, Charity)
 	}

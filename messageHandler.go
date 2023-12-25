@@ -91,6 +91,37 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 					s.ChannelMessageSend(m.ChannelID, "Invalid admin command")
 				}
 			}
+		} else if com[0] == "!test" {
+			testDono(s)
 		}
 	}
+}
+
+func testDono(s *discordgo.Session) {
+	var raisedVal = 50.00
+	var amountVal = 50.00
+
+	embed := &discordgo.MessageEmbed{
+		Title:       fmt.Sprintf("%s Donation", "Test Charity"),
+		URL:         "",
+		Description: fmt.Sprintf("$%.2f donation received.", amountVal),
+		Color:       0xDB842B,
+		Thumbnail: &discordgo.MessageEmbedThumbnail{
+			URL: "",
+		},
+		Fields: []*discordgo.MessageEmbedField{
+			{
+				Name:   "Test Donation",
+				Value:  "This is not a real donation. This is just a test.",
+				Inline: true,
+			},
+			{
+				Name:   fmt.Sprintf("%s Goal Status", "Test Charity"),
+				Value:  fmt.Sprintf("$%.2f of $%s", raisedVal+amountVal, "1000"),
+				Inline: true,
+			},
+		},
+	}
+
+	s.ChannelMessageSendEmbed(ChannelID, embed)
 }

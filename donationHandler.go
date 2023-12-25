@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"strconv"
 	"time"
 
 	"github.com/bwmarrin/discordgo"
@@ -33,6 +34,9 @@ func checkDonations(s *discordgo.Session, t time.Time) {
 				displayName = "Anonymous"
 			}
 
+			var raisedVal, _ = strconv.ParseFloat(raised, 64)
+			var amountVal, _ = strconv.ParseFloat(amount, 64)
+
 			embed := &discordgo.MessageEmbed{
 				Title:       fmt.Sprintf("%s Donation", Charity),
 				URL:         donate,
@@ -49,7 +53,7 @@ func checkDonations(s *discordgo.Session, t time.Time) {
 					},
 					{
 						Name:   fmt.Sprintf("%s Goal Status", Charity),
-						Value:  fmt.Sprintf("$%s of $%s", raised+amount, goal),
+						Value:  fmt.Sprintf("$%.2f of $%s", raisedVal+amountVal, goal),
 						Inline: true,
 					},
 				},
