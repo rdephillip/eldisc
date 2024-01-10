@@ -7,7 +7,7 @@ Please note that I will explain configuring for Extra Life participants. If you 
 
 - FirstSetup: This is a boolean value (true/false) which the program uses and stores to either initialize the configuration file or to load your custom settings
 - Token: This is your Discord bot token. This is created when you configure your Discord Developer Portal application. Visit [Discord Developer Portal Documentation](https://discord.com/developers/docs/intro) for guidance from Discord on this process.
-- Urk: This is the API URL you intend to access. For Extra Life you would use https://www.extra-life.org/api but this will vary depending on the API you're accessing.
+- Url: This is the API URL you intend to access. For Extra Life you would use https://www.extra-life.org/api but this will vary depending on the API you're accessing.
 - Pid: This is the Participant ID. Extra Life will have this as a number in the URL of your page on their site.
 - AdminAuthor: This is the Discord user ID which is assigned rights to use the !config commands and that can bypass the timer for the status command. This should be set to you. In Discord click your profile image in the lower right, then select Copy User ID.
 - ChannelID: This is the channel you want the bot to announce its messages to. You can get this by right clicking the channel and clicking the Copy Channel ID. After the bots first setup is complete, you can also use **!config set channelid this** in the channel you want to set it to.
