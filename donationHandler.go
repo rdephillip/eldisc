@@ -35,7 +35,6 @@ func checkDonations(s *discordgo.Session, t time.Time) {
 			}
 
 			var raisedVal, _ = strconv.ParseFloat(raised, 64)
-			var amountVal, _ = strconv.ParseFloat(amount, 64)
 
 			embed := &discordgo.MessageEmbed{
 				Title:       fmt.Sprintf("%s Donation", Charity),
@@ -53,7 +52,7 @@ func checkDonations(s *discordgo.Session, t time.Time) {
 					},
 					{
 						Name:   fmt.Sprintf("%s Goal Status", Charity),
-						Value:  fmt.Sprintf("$%.2f of $%s", raisedVal+amountVal, goal),
+						Value:  fmt.Sprintf("$%.2f of $%s", raisedVal, goal),
 						Inline: true,
 					},
 				},
