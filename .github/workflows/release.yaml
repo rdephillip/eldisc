@@ -50,4 +50,4 @@ jobs:
       - name: Upload to release
         uses: softprops/action-gh-release@v2
         with:
-          files: build/*.zip, build/*.targ.gz
+          files: build/*.zip, build/*.tar.gz
