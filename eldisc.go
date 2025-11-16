@@ -69,6 +69,7 @@ func main() {
 	if err != nil {
 		log.Println("Error opening connection,", err)
 	}
+	defer dg.Close()
 
 	// Display console information of bot status and hardcorded Discord configuration commands
 	log.Println("Bot is now running. Press CTRL-C to exit.")
@@ -84,6 +85,8 @@ func main() {
 
 	// Identify 15 second timer to limit API calls and check for donations
 	ticker := time.NewTicker(15 * 1000 * time.Millisecond)
+	defer ticker.Stop()
+
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 
@@ -96,9 +99,4 @@ func main() {
 			LastCheck = time.Now()
 		}
 	}
-
-	// Cleanup and save configuration on close
-	ticker.Stop()
-	dg.Close()
-	saveConfig(false)
 }
