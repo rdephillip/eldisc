@@ -1,0 +1,50 @@
+name: Release Binaries
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  builds:
+    name: Build release binaries
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        goos: [linux, windows, darwin]
+        goarch: [amd64]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.4'
+    
+      - name: Build binary
+        run: |
+          mkdir -p build
+          outfile="build/eldisc-${{ github.ref_name }}-${{ matrix.goos }}-${{ matrix.goarch }}"
+          if [ "${{ matrix.goos }}" = "windows" ]; then
+            outfile="${outfile}.exe"
+          fi
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o "${outfile}" .
+
+      - name: Archive binaries
+        run: |
+          outfile="build/eldisc-${{ github.ref_name }}-${{ matrix.goos }}-${{ matrix.goarch }}"
+          if [ "${{ matrix.goos }}" = "windows" ]; then
+            zip -j "build/eldisc-${{ github.ref_name }}-${{ matrix.goos }}-${{ matrix.goarch }}.zip" "$outfile"
+          else
+            tar -czf "build/eldisc-${{ github.ref_name }}-${{ matrix.goos }}-${{ matrix.goarch }}.tar.gz" "$outfile"
+          fi
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/*.zip, build/*.targ.gz
