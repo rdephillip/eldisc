@@ -39,6 +39,9 @@ jobs:
         run: |
           outfile="build/eldisc-${{ github.ref_name }}-${{ matrix.goos }}-${{ matrix.goarch }}"
           if [ "${{ matrix.goos }}" = "windows" ]; then
+            outfile="${outfile}.exe"
+          fi
+          if [ "${{ matrix.goos }}" = "windows" ]; then
             zip -j "build/eldisc-${{ github.ref_name }}-${{ matrix.goos }}-${{ matrix.goarch }}.zip" "$outfile"
           else
             tar -czf "build/eldisc-${{ github.ref_name }}-${{ matrix.goos }}-${{ matrix.goarch }}.tar.gz" "$outfile"
